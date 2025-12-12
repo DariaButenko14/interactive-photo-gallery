@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Gallery | Интерактивная фотогалерея</title>
+    <meta name="description" content="Минималистичная интерактивная фотогалерея с управлением состоянием. Учебный проект по веб-дизайну.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📸</text></svg>">
+<!-- Прелоадер для загрузки изображений -->
+<style>
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+    }
+    .loader {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #222;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <!-- Хедер -->
+        <header class="header">
+            <h1 class="logo">Minimal Gallery</h1>
+            <p class="subtitle">Интерактивная фотогалерея с управлением состоянием</p>
+        </header>
+
+        <!-- Панель управления состоянием -->
+        <section class="control-panel">
+            <div class="controls">
+                <button class="btn btn-filter active" data-filter="all">Все</button>
+                <button class="btn btn-filter" data-filter="nature">Природа</button>
+                <button class="btn btn-filter" data-filter="architecture">Архитектура</button>
+                <button class="btn btn-filter" data-filter="abstract">Абстракция</button>
+                
+                <div class="view-controls">
+                    <button id="gridViewBtn" class="btn btn-view active" title="Сетка">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button id="listViewBtn" class="btn btn-view" title="Список">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="stats">
+                <p>Показано: <span id="showingCount">12</span> из <span id="totalCount">12</span> фото</p>
+                <button class="btn btn-secondary" id="resetBtn">
+                    <i class="fas fa-redo"></i> Сбросить фильтры
+                </button>
+            </div>
+        </section>
+
+        <!-- Основная галерея -->
+        <main class="gallery-container">
+            <div class="gallery" id="gallery">
+                <!-- Карточки будут сгенерированы через JavaScript -->
+            </div>
+            <div class="empty-state" id="emptyState">
+                <i class="fas fa-image"></i>
+                <h3>Ничего не найдено</h3>
+                <p>Попробуйте выбрать другой фильтр</p>
+            </div>
+        </main>
+
+        <!-- Модальное окно для просмотра фото -->
+        <div class="modal" id="imageModal">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <img class="modal-image" id="modalImage" src="" alt="Увеличенное изображение">
+                <div class="modal-info">
+                    <h3 id="modalTitle">Название изображения</h3>
+                    <p id="modalDescription">Описание изображения</p>
+                    <p><strong>Категория:</strong> <span id="modalCategory">Природа</span></p>
+                    <p><strong>Дата:</strong> <span id="modalDate">Сегодня</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <footer class="footer">
+            <p>Учебный проект по веб-дизайну. <span id="currentYear">2024</span></p>
+            <p>Студент: Дария Бутенко | Группа: 5-МВ-4</p>
+            <p class="footer-links">
+                <a href="https://github.com/DariaButenko14" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a> | 
+                <a href="mailto:dmlarionova@gmail.com">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

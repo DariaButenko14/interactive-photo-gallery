@@ -1,0 +1,471 @@
+/* Сброс и базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fafafa;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    padding: 30px;
+}
+
+/* Хедер */
+.header {
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 30px;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: #222;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Панель управления */
+.control-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.btn-filter {
+    background-color: #fff;
+    color: #555;
+    border: 1px solid #e0e0e0;
+}
+
+.btn-filter.active, .btn-filter:hover {
+    background-color: #222;
+    color: white;
+    border-color: #222;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #555;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.view-controls {
+    display: flex;
+    margin-left: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.btn-view {
+    padding: 10px 15px;
+    background-color: white;
+    border-radius: 0;
+    border: none;
+    color: #777;
+}
+
+.btn-view.active {
+    background-color: #222;
+    color: white;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* Галерея */
+.gallery-container {
+    margin-bottom: 40px;
+    min-height: 500px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    transition: all 0.4s ease;
+}
+
+.gallery.list-view {
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.gallery.list-view .card {
+    flex-direction: row;
+    height: 200px;
+}
+
+.gallery.list-view .card-image-container {
+    width: 300px;
+    height: 100%;
+}
+
+.gallery.list-view .card-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px 0 0 8px;
+}
+
+.gallery.list-view .card-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    height: 320px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-image-container {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+}
+
+.card-image.loading {
+    filter: blur(5px);
+}
+
+.card:hover .card-image {
+    transform: scale(1.03);
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.card-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.card-category {
+    background-color: #f0f0f0;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.card-btn {
+    background-color: #222;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.card-btn:hover {
+    background-color: #444;
+}
+
+/* Состояние "ничего не найдено" */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #aaa;
+    display: none;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #777;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    max-width: 900px;
+    width: 100%;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.modal-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+.modal-info {
+    padding: 25px;
+}
+
+.modal-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.modal-info p {
+    margin-bottom: 8px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.modal-info strong {
+    color: #333;
+}
+
+/* Футер */
+.footer {
+    text-align: center;
+    padding: 30px 20px;
+    border-top: 1px solid #f0f0f0;
+    color: #777;
+    font-size: 0.95rem;
+}
+
+.footer-links {
+    margin-top: 15px;
+}
+
+.footer-links a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #222;
+    text-decoration: underline;
+}
+
+.footer-links i {
+    margin-right: 5px;
+}
+
+/* Прелоадер */
+.preloader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    grid-column: 1 / -1;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #222;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .gallery.list-view .card {
+        height: auto;
+        flex-direction: column;
+    }
+    
+    .gallery.list-view .card-image-container {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .gallery.list-view .card-image {
+        border-radius: 8px 8px 0 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    
+    .control-panel {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+    
+    .controls, .stats {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
+    
+    .logo {
+        font-size: 2rem;
+    }
+    
+    .modal-image {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .card {
+        height: 300px;
+    }
+    
+    .card-image-container {
+        height: 180px;
+    }
+    
+    .modal-image {
+        height: 250px;
+    }
+}
